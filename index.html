@@ -6,10 +6,10 @@
     <title>Google Antigravity 2.0 フルスタック開発チュートリアル | AI対話で作る予約・販売管理システム</title>
     <meta name="description" content="プログラミング未経験でも大丈夫！「全部入りのGoogleのAIでつくる！」コードを一切書かず、AIエージェントとの対話だけで予約・販売管理システムを完全構築・自動化する全4ステップチュートリアル。">
     
-    <!-- Google Fonts: Inter, Outfit, JetBrains Mono -->
+    <!-- Google Fonts: Plus Jakarta Sans, Outfit, Space Grotesk, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,25 +18,21 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Inter"', '"Noto Sans JP"', 'sans-serif'],
-                        display: ['"Outfit"', '"Noto Sans JP"', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', '"Noto Sans JP"', 'sans-serif'],
+                        display: ['"Outfit"', '"Space Grotesk"', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
-                        brand: {
-                            blue: '#4285F4',
-                            red: '#EA4335',
-                            yellow: '#FBBC05',
-                            green: '#34A853',
-                            dark: '#070A11',
-                            card: 'rgba(15, 23, 42, 0.65)',
-                            border: 'rgba(255, 255, 255, 0.1)',
-                            accent: '#6366F1'
+                        cyber: {
+                            dark: '#030712',
+                            card: 'rgba(15, 23, 42, 0.75)',
+                            cyan: '#06B6D4',
+                            blue: '#38BDF8',
+                            indigo: '#6366F1',
+                            purple: '#A855F7',
+                            pink: '#EC4899',
+                            emerald: '#10B981'
                         }
-                    },
-                    backgroundImage: {
-                        'hero-glow': 'radial-gradient(circle at 50% 15%, rgba(66, 133, 244, 0.22) 0%, rgba(99, 102, 241, 0.12) 35%, transparent 70%)',
-                        'grid-pattern': 'radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px)'
                     }
                 }
             }
@@ -46,177 +42,179 @@
     <!-- FontAwesome Icons CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Custom CSS (UI UX Pro Max Standards - Cache Busted) -->
-    <link rel="stylesheet" href="styles.css?v=20260723">
+    <!-- Custom CSS (UI UX Pro Max Standards - Cache Busted v3) -->
+    <link rel="stylesheet" href="styles.css?v=20260723_v3">
 </head>
-<body class="bg-[#070A11] text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+<body class="bg-[#030712] text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-cyan-500 selection:text-white cyber-grid-bg">
 
     <!-- Header Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#070A11]/80 border-b border-white/10 transition-all duration-300">
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-[#030712]/80 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3 group cursor-pointer">
-                <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 text-white font-bold text-lg shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform duration-300">
+            <div class="flex items-center space-x-3.5 group cursor-pointer">
+                <div class="relative flex items-center justify-center w-11 h-11 rounded-2xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 text-white font-bold text-xl shadow-lg shadow-cyan-500/30 group-hover:scale-110 transition-transform duration-300">
                     <i class="fa-solid fa-bolt"></i>
+                    <div class="absolute -inset-0.5 rounded-2xl bg-cyan-400 opacity-40 blur-md group-hover:opacity-80 transition-opacity"></div>
                 </div>
                 <div>
-                    <span class="font-display font-extrabold text-xl tracking-tight text-white flex items-center gap-1.5">
-                        Google Antigravity <span class="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent font-black">2.0</span>
+                    <span class="font-display font-black text-2xl tracking-tight text-white flex items-center gap-2">
+                        Google Antigravity <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">2.0</span>
                     </span>
-                    <span class="block text-[10px] text-indigo-300/80 font-mono tracking-widest uppercase font-semibold">FULLSTACK TUTORIAL</span>
+                    <span class="block text-[10px] text-cyan-400 font-mono tracking-widest uppercase font-bold">NEXT-GEN AI STUDIO</span>
                 </div>
             </div>
             
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-                <a href="#features" class="hover:text-white transition-colors duration-200 py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-indigo-500 hover:after:w-full after:transition-all">提供価値</a>
-                <a href="#steps" class="hover:text-white transition-colors duration-200 py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-indigo-500 hover:after:w-full after:transition-all">4ステップ学習</a>
-                <a href="#ai-demo" class="hover:text-white transition-colors duration-200 py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-indigo-500 hover:after:w-full after:transition-all">対話デモ体験</a>
-                <a href="#curriculum" class="hover:text-white transition-colors duration-200 py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-indigo-500 hover:after:w-full after:transition-all">受講内容</a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-300">
+                <a href="#features" class="hover:text-cyan-400 transition-colors duration-200 py-1">提供価値</a>
+                <a href="#steps" class="hover:text-cyan-400 transition-colors duration-200 py-1">4ステップ学習</a>
+                <a href="#ai-demo" class="hover:text-cyan-400 transition-colors duration-200 py-1">対話デモ体験</a>
+                <a href="#curriculum" class="hover:text-cyan-400 transition-colors duration-200 py-1">受講内容</a>
             </nav>
 
             <div>
-                <a href="#register" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-105 active:scale-95 transition-all duration-300">
+                <a href="#register" class="relative inline-flex items-center justify-center px-7 py-3 text-sm font-extrabold rounded-full bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 text-white shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-105 active:scale-95 transition-all duration-300">
                     <span>受講予約を申し込む</span>
-                    <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    <i class="fa-solid fa-arrow-right ml-2.5 text-xs"></i>
                 </a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative pt-36 pb-24 md:pt-48 md:pb-36 bg-hero-glow overflow-hidden">
-        <!-- Ambient Light Orbs -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/15 rounded-full blur-[160px] pointer-events-none animate-ambient-float"></div>
-        <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-purple-600/15 rounded-full blur-[120px] pointer-events-none animate-ambient-float" style="animation-delay: -4s;"></div>
+    <section class="relative pt-40 pb-28 md:pt-52 md:pb-40 overflow-hidden">
+        <!-- Ambient Glowing Orbs -->
+        <div class="glow-orb-cyan top-10 left-1/2 -translate-x-1/2 animate-laser-pulse"></div>
+        <div class="glow-orb-purple top-40 right-10 animate-laser-pulse" style="animation-delay: -2s;"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <!-- Badge -->
-                <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-panel border border-indigo-500/30 text-xs sm:text-sm font-medium text-indigo-300 mb-8 shadow-lg shadow-indigo-500/10">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 status-dot-active"></span>
-                    <span class="tracking-wide">プログラミング未経験でも安心！次世代ノーコードAI開発</span>
+                
+                <!-- Cyber Neon Badge -->
+                <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full cyber-badge text-xs sm:text-sm font-bold text-cyan-300 mb-8">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 live-pulse-dot"></span>
+                    <span class="tracking-wider uppercase font-mono">NEW LAUNCH 2026 — 次世代ノーコードAI開発</span>
                 </div>
 
                 <!-- Main Catchphrase -->
-                <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.12] mb-8">
-                    <span class="block text-gradient-hero">コードは一切書かない。</span>
-                    <span class="text-gradient-brand drop-shadow-lg">
+                <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.1] mb-8">
+                    <span class="block text-gradient-cyber drop-shadow-sm">コードは一切書かない。</span>
+                    <span class="text-gradient-neon drop-shadow-2xl">
                         全部入りのGoogleのAIでつくる！
                     </span>
                 </h1>
 
                 <!-- Sub Copy -->
-                <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed mb-10">
+                <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed mb-12">
                     AIエージェントとの対話だけで、告知・顧客Web予約・データ管理・業務自動化まで。<br class="hidden sm:inline">
-                    自社専用の予約・販売管理システムを完全構築する<strong class="text-white font-semibold underline decoration-indigo-500 decoration-2 underline-offset-4">実践型4ステップチュートリアル</strong>
+                    自社専用の予約・販売管理システムを完全構築する<strong class="text-cyan-300 font-bold underline decoration-cyan-500 decoration-2 underline-offset-8">実践型4ステップチュートリアル</strong>
                 </p>
 
                 <!-- CTA Actions -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-5 mb-16">
-                    <a href="#register" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-bold text-lg shadow-xl shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:-translate-y-1 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-3">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-20">
+                    <a href="#register" class="w-full sm:w-auto px-9 py-4.5 rounded-2xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 text-white font-extrabold text-lg shadow-2xl shadow-cyan-500/40 hover:shadow-cyan-500/60 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3">
                         <i class="fa-solid fa-graduation-cap text-xl"></i>
                         <span>受講申し込み（今すぐ予約）</span>
                         <i class="fa-solid fa-chevron-right text-xs"></i>
                     </a>
-                    <a href="#ai-demo" class="w-full sm:w-auto px-8 py-4 rounded-2xl glass-panel text-slate-200 font-semibold text-lg hover:bg-slate-800/80 hover:text-white hover:border-indigo-500/40 transition-all duration-300 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-comments text-indigo-400"></i>
+                    <a href="#ai-demo" class="w-full sm:w-auto px-9 py-4.5 rounded-2xl bento-card text-slate-200 font-bold text-lg hover:text-cyan-300 transition-all duration-300 flex items-center justify-center gap-2.5">
+                        <i class="fa-solid fa-comments text-cyan-400"></i>
                         <span>AI対話デモを見る</span>
                     </a>
                 </div>
 
-                <!-- Trust Elements -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto pt-8 border-t border-white/10 text-slate-400 text-xs sm:text-sm font-medium">
-                    <div class="flex items-center justify-center gap-2.5 glass-panel py-2.5 px-3 rounded-xl">
-                        <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+                <!-- Trust Elements Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-8 border-t border-white/10 text-slate-300 text-xs sm:text-sm font-semibold">
+                    <div class="flex items-center justify-center gap-3 bento-card py-3.5 px-4">
+                        <i class="fa-solid fa-circle-check text-cyan-400 text-base"></i>
                         <span>環境構築不要</span>
                     </div>
-                    <div class="flex items-center justify-center gap-2.5 glass-panel py-2.5 px-3 rounded-xl">
-                        <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+                    <div class="flex items-center justify-center gap-3 bento-card py-3.5 px-4">
+                        <i class="fa-solid fa-circle-check text-cyan-400 text-base"></i>
                         <span>動画解説セット</span>
                     </div>
-                    <div class="flex items-center justify-center gap-2.5 glass-panel py-2.5 px-3 rounded-xl">
-                        <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+                    <div class="flex items-center justify-center gap-3 bento-card py-3.5 px-4">
+                        <i class="fa-solid fa-circle-check text-cyan-400 text-base"></i>
                         <span>対話型AI講師付き</span>
                     </div>
-                    <div class="flex items-center justify-center gap-2.5 glass-panel py-2.5 px-3 rounded-xl">
-                        <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+                    <div class="flex items-center justify-center gap-3 bento-card py-3.5 px-4">
+                        <i class="fa-solid fa-circle-check text-cyan-400 text-base"></i>
                         <span>自社用カスタマイズ自由</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Hero Visual Preview Card -->
-            <div class="mt-16 relative max-w-5xl mx-auto">
-                <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 opacity-30 blur-2xl animate-pulse-glow"></div>
-                <div class="relative glass-panel rounded-2xl overflow-hidden shadow-2xl">
-                    <div class="bg-slate-950/90 px-5 py-3.5 border-b border-white/10 flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
-                            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
-                            <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-                            <span class="ml-3 text-xs font-mono text-slate-400">Google Antigravity 2.0 Studio — AI Workspace Console</span>
+            <!-- Hero Visual Preview Card (Ultra-High-End Console) -->
+            <div class="mt-20 relative max-w-5xl mx-auto animate-float-slow">
+                <div class="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 opacity-40 blur-2xl animate-laser-pulse"></div>
+                <div class="relative code-glow-box rounded-3xl overflow-hidden shadow-2xl">
+                    <div class="bg-[#030712]/95 px-6 py-4 border-b border-white/10 flex items-center justify-between">
+                        <div class="flex items-center space-x-2.5">
+                            <span class="w-3.5 h-3.5 rounded-full bg-red-500 inline-block shadow-md shadow-red-500/50"></span>
+                            <span class="w-3.5 h-3.5 rounded-full bg-yellow-500 inline-block shadow-md shadow-yellow-500/50"></span>
+                            <span class="w-3.5 h-3.5 rounded-full bg-emerald-500 inline-block shadow-md shadow-emerald-500/50"></span>
+                            <span class="ml-3 text-xs font-mono font-bold text-slate-400 tracking-wider">Google Antigravity 2.0 Studio Console v2.4</span>
                         </div>
                         <div class="text-xs text-slate-400 flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 status-dot-active"></span>
-                            <span class="font-mono text-[11px] text-emerald-400">AI Agent Active</span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 live-pulse-dot"></span>
+                            <span class="font-mono text-xs text-emerald-400 font-bold">SYSTEM ACTIVE</span>
                         </div>
                     </div>
-                    <div class="p-6 md:p-8 grid md:grid-cols-12 gap-8 items-center">
-                        <div class="md:col-span-5 space-y-4 text-left">
-                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-indigo-950/80 border border-indigo-500/40 text-xs text-indigo-300 font-mono">
-                                <i class="fa-solid fa-wand-magic-sparkles text-indigo-400"></i>
-                                <span>自然言語プロンプト入力例</span>
+                    <div class="p-8 md:p-10 grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-5 space-y-5 text-left">
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-cyan-950/80 border border-cyan-500/50 text-xs text-cyan-300 font-mono font-bold">
+                                <i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i>
+                                <span>自然言語プロンプト</span>
                             </div>
-                            <h3 class="text-xl font-bold text-white leading-snug">「サロンのWeb予約と顧客データベース、リマインドメール送信を連動させて」</h3>
+                            <h3 class="text-2xl font-bold text-white leading-snug font-display">「サロンのWeb予約と顧客データベース、リマインドメール送信を連動させて」</h3>
                             <p class="text-sm text-slate-300 leading-relaxed">プログラミング言語の知識はゼロでOK。AIエージェントが意図を理解し、フロント画面からデータベース・決済・自動返信までを一元設計します。</p>
-                            <div class="pt-2 flex flex-wrap gap-2 text-[11px] font-mono text-slate-300">
-                                <span class="bg-slate-900/90 px-3 py-1 rounded-md border border-white/10">#予約システム</span>
-                                <span class="bg-slate-900/90 px-3 py-1 rounded-md border border-white/10">#決済自動化</span>
-                                <span class="bg-slate-900/90 px-3 py-1 rounded-md border border-white/10">#顧客管理DB</span>
+                            <div class="pt-2 flex flex-wrap gap-2 text-xs font-mono text-slate-300">
+                                <span class="bg-slate-900 px-3 py-1.5 rounded-lg border border-white/10">#予約システム</span>
+                                <span class="bg-slate-900 px-3 py-1.5 rounded-lg border border-white/10">#決済自動化</span>
+                                <span class="bg-slate-900 px-3 py-1.5 rounded-lg border border-white/10">#顧客管理DB</span>
                             </div>
                         </div>
-                        <div class="md:col-span-7 bg-[#070A11] rounded-xl p-5 border border-white/10 font-mono text-xs text-slate-300 relative overflow-hidden shadow-inner">
-                            <div class="flex items-center justify-between pb-3.5 mb-3.5 border-b border-white/10 text-slate-400">
-                                <span class="text-[11px] font-bold tracking-wider uppercase text-indigo-300">Generated System Architecture</span>
-                                <span class="text-emerald-400 font-semibold flex items-center gap-1.5">
+                        <div class="md:col-span-7 bg-[#030712] rounded-2xl p-6 border border-white/10 font-mono text-xs text-slate-300 relative overflow-hidden shadow-2xl">
+                            <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10 text-slate-400">
+                                <span class="text-xs font-bold tracking-widest uppercase text-cyan-400">Generated Architecture</span>
+                                <span class="text-emerald-400 font-bold flex items-center gap-2">
                                     <i class="fa-solid fa-circle-check"></i> Build Ready
                                 </span>
                             </div>
-                            <div class="space-y-3">
-                                <div class="p-3 rounded-lg glass-panel flex items-center justify-between hover:border-indigo-500/40 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center">
+                            <div class="space-y-3.5">
+                                <div class="p-3.5 rounded-xl bento-card flex items-center justify-between hover:border-cyan-500/50 transition-colors">
+                                    <div class="flex items-center gap-3.5">
+                                        <div class="w-9 h-9 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-base">
                                             <i class="fa-solid fa-desktop"></i>
                                         </div>
                                         <div>
-                                            <div class="text-slate-100 font-semibold">1. Web予約・告知 LP</div>
+                                            <div class="text-slate-100 font-bold text-sm">1. Web予約・告知 LP</div>
                                             <div class="text-[11px] text-slate-400">Tailwind UI + モバイル最適化済み予約フォーム</div>
                                         </div>
                                     </div>
-                                    <span class="text-[10px] text-indigo-300 bg-indigo-950 px-2.5 py-1 rounded-md border border-indigo-800">UI/UX</span>
+                                    <span class="text-[10px] text-cyan-300 bg-cyan-950 px-3 py-1 rounded-md border border-cyan-800 font-bold">UI/UX</span>
                                 </div>
-                                <div class="p-3 rounded-lg glass-panel flex items-center justify-between hover:border-indigo-500/40 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center">
+                                <div class="p-3.5 rounded-xl bento-card flex items-center justify-between hover:border-indigo-500/50 transition-colors">
+                                    <div class="flex items-center gap-3.5">
+                                        <div class="w-9 h-9 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-base">
                                             <i class="fa-solid fa-database"></i>
                                         </div>
                                         <div>
-                                            <div class="text-slate-100 font-semibold">2. リアルタイム予約データベース</div>
+                                            <div class="text-slate-100 font-bold text-sm">2. リアルタイム予約データベース</div>
                                             <div class="text-[11px] text-slate-400">顧客情報・予約枠管理・重複チェックアルゴリズム</div>
                                         </div>
                                     </div>
-                                    <span class="text-[10px] text-purple-300 bg-purple-950 px-2.5 py-1 rounded-md border border-purple-800">Database</span>
+                                    <span class="text-[10px] text-purple-300 bg-purple-950 px-3 py-1 rounded-md border border-purple-800 font-bold">Database</span>
                                 </div>
-                                <div class="p-3 rounded-lg glass-panel flex items-center justify-between hover:border-indigo-500/40 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                                <div class="p-3.5 rounded-xl bento-card flex items-center justify-between hover:border-emerald-500/50 transition-colors">
+                                    <div class="flex items-center gap-3.5">
+                                        <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-base">
                                             <i class="fa-solid fa-paper-plane"></i>
                                         </div>
                                         <div>
-                                            <div class="text-slate-100 font-semibold">3. LINE / Email リマインド自動化</div>
+                                            <div class="text-slate-100 font-bold text-sm">3. LINE / Email リマインド自動化</div>
                                             <div class="text-[11px] text-slate-400">前日リマインド＆決済通知ワークフロー構築</div>
                                         </div>
                                     </div>
-                                    <span class="text-[10px] text-emerald-300 bg-emerald-950 px-2.5 py-1 rounded-md border border-emerald-800">Automation</span>
+                                    <span class="text-[10px] text-emerald-300 bg-emerald-950 px-3 py-1 rounded-md border border-emerald-800 font-bold">Automation</span>
                                 </div>
                             </div>
                         </div>
@@ -226,45 +224,45 @@
         </div>
     </section>
 
-    <!-- Key Value Proposition / Features -->
-    <section id="features" class="py-28 relative border-t border-white/10">
+    <!-- Key Value Proposition / Features (Bento Grid Style) -->
+    <section id="features" class="py-32 relative border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-20">
-                <h2 class="text-xs font-bold text-indigo-400 tracking-widest uppercase mb-3 font-mono">Why Google Antigravity 2.0?</h2>
-                <p class="font-display text-3xl sm:text-5xl font-extrabold text-white">なぜ外注や難解なコード学習が不要になるのか？</p>
-                <p class="mt-4 text-slate-400 text-base">開発に必要なすべてが一つに統合されたGoogle最新AIだから実現できる、3つの強力なアドバンテージ。</p>
+                <h2 class="text-xs font-extrabold text-cyan-400 tracking-widest uppercase mb-3 font-mono">Why Google Antigravity 2.0?</h2>
+                <p class="font-display text-4xl sm:text-5xl font-black text-white">なぜ外注や難解なコード学習が不要になるのか？</p>
+                <p class="mt-5 text-slate-300 text-base sm:text-lg">開発に必要なすべてが一つに統合されたGoogle最新AIだから実現できる、3つの強力なアドバンテージ。</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="p-8 rounded-3xl glass-panel glass-card-hover relative group">
-                    <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/30 text-blue-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                <!-- Bento Card 1 -->
+                <div class="p-9 bento-card relative group">
+                    <div class="w-16 h-16 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-brain"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">対話だけでシステムが完成</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="text-2xl font-bold text-white mb-4 font-display">対話だけでシステムが完成</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
                         構想や希望を日本語でAI講師に伝えるだけ。画面デザインからバックエンドの連携まで、AIエージェントが自動で構築します。
                     </p>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="p-8 rounded-3xl glass-panel glass-card-hover relative group">
-                    <div class="w-14 h-14 rounded-2xl bg-indigo-500/15 border border-indigo-500/30 text-indigo-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                <!-- Bento Card 2 -->
+                <div class="p-9 bento-card relative group">
+                    <div class="w-16 h-16 rounded-2xl bg-indigo-500/20 border border-indigo-500/40 text-indigo-400 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-cubes-stacked"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">「全部入り」フルスタック仕様</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="text-2xl font-bold text-white mb-4 font-display">「全部入り」フルスタック仕様</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
                         告知ページ、予約カレンダー、顧客データベース、自動メール通知まで個別のサービスを組み合わせる必要はありません。
                     </p>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="p-8 rounded-3xl glass-panel glass-card-hover relative group">
-                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                <!-- Bento Card 3 -->
+                <div class="p-9 bento-card relative group">
+                    <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-headset"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">24時間AI講師対話型サポート</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="text-2xl font-bold text-white mb-4 font-display">24時間AI講師対話型サポート</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
                         学習中につまずく心配ゼロ。疑問点やカスタマイズの要望を投げかければ、AI講師が即座に回答・修正を実行します。
                     </p>
                 </div>
@@ -273,80 +271,80 @@
     </section>
 
     <!-- 4-Step Process Section -->
-    <section id="steps" class="py-28 relative border-t border-white/10 bg-slate-950/40">
+    <section id="steps" class="py-32 relative border-t border-white/10 bg-[#030712]/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-20">
-                <span class="px-4 py-1.5 rounded-full glass-panel border border-indigo-500/30 text-indigo-300 text-xs font-bold font-mono uppercase tracking-wider">Step-by-Step Curriculum</span>
-                <h2 class="font-display text-3xl sm:text-5xl font-black text-white mt-4">全4ステップの完全実践プロセス</h2>
-                <p class="mt-4 text-slate-300 text-base">未経験者でも確実に自社システムを立ち上げられる、体系化された4段階のアプローチ</p>
+                <span class="px-5 py-2 rounded-full cyber-badge text-cyan-300 text-xs font-extrabold font-mono uppercase tracking-wider">Step-by-Step Curriculum</span>
+                <h2 class="font-display text-4xl sm:text-5xl font-black text-white mt-5">全4ステップの完全実践プロセス</h2>
+                <p class="mt-4 text-slate-300 text-base sm:text-lg">未経験者でも確実に自社システムを立ち上げられる、体系化された4段階のアプローチ</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-7 relative">
                 <!-- Step 1 -->
-                <div class="relative glass-panel glass-card-hover rounded-3xl p-6 flex flex-col justify-between group">
+                <div class="relative bento-card p-7 flex flex-col justify-between group">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <span class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-extrabold text-xl flex items-center justify-center shadow-lg shadow-blue-500/30">01</span>
-                            <span class="text-xs text-blue-300 font-mono bg-blue-950/80 px-3 py-1 rounded-full border border-blue-800">要件ヒアリング</span>
+                        <div class="flex items-center justify-between mb-8">
+                            <span class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 text-white font-extrabold text-2xl flex items-center justify-center shadow-lg shadow-cyan-500/30">01</span>
+                            <span class="text-xs text-cyan-300 font-mono bg-cyan-950/90 px-3.5 py-1.5 rounded-full border border-cyan-800 font-bold">要件ヒアリング</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">AIエージェントに要望を伝える</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        <h3 class="text-xl font-bold text-white mb-3.5 font-display">AIエージェントに要望を伝える</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
                             「どんな予約システムにしたいか」を日常会話の言葉で送信。AIが機能要件を自動分解します。
                         </p>
                     </div>
-                    <div class="bg-slate-950/80 rounded-xl p-3 border border-white/10 text-xs text-slate-300 font-mono">
-                        <i class="fa-solid fa-comment-dots text-blue-400 mr-1.5"></i> 「セミナー予約とカード決済を入れたい」
+                    <div class="bg-[#030712] rounded-xl p-3.5 border border-white/10 text-xs text-slate-300 font-mono">
+                        <i class="fa-solid fa-comment-dots text-cyan-400 mr-2"></i> 「セミナー予約と決済を入れたい」
                     </div>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="relative glass-panel glass-card-hover rounded-3xl p-6 flex flex-col justify-between group">
+                <div class="relative bento-card p-7 flex flex-col justify-between group">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <span class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white font-extrabold text-xl flex items-center justify-center shadow-lg shadow-indigo-500/30">02</span>
-                            <span class="text-xs text-indigo-300 font-mono bg-indigo-950/80 px-3 py-1 rounded-full border border-indigo-800">自動生成</span>
+                        <div class="flex items-center justify-between mb-8">
+                            <span class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-600 text-white font-extrabold text-2xl flex items-center justify-center shadow-lg shadow-indigo-500/30">02</span>
+                            <span class="text-xs text-indigo-300 font-mono bg-indigo-950/90 px-3.5 py-1.5 rounded-full border border-indigo-800 font-bold">自動生成</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">フロントUI＆DBの自動設計</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        <h3 class="text-xl font-bold text-white mb-3.5 font-display">フロントUI＆DBの自動設計</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
                             Google AIが告知Webページ、予約枠管理テーブル、顧客マスターを一瞬で生成・接続します。
                         </p>
                     </div>
-                    <div class="bg-slate-950/80 rounded-xl p-3 border border-white/10 text-xs text-slate-300 font-mono">
-                        <i class="fa-solid fa-gears text-indigo-400 mr-1.5"></i> UI Components & DB Generated
+                    <div class="bg-[#030712] rounded-xl p-3.5 border border-white/10 text-xs text-slate-300 font-mono">
+                        <i class="fa-solid fa-gears text-indigo-400 mr-2"></i> UI Components & DB Generated
                     </div>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="relative glass-panel glass-card-hover rounded-3xl p-6 flex flex-col justify-between group">
+                <div class="relative bento-card p-7 flex flex-col justify-between group">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <span class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-600 text-white font-extrabold text-xl flex items-center justify-center shadow-lg shadow-purple-500/30">03</span>
-                            <span class="text-xs text-purple-300 font-mono bg-purple-950/80 px-3 py-1 rounded-full border border-purple-800">対話調整</span>
+                        <div class="flex items-center justify-between mb-8">
+                            <span class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-500 to-pink-600 text-white font-extrabold text-2xl flex items-center justify-center shadow-lg shadow-purple-500/30">03</span>
+                            <span class="text-xs text-purple-300 font-mono bg-purple-950/90 px-3.5 py-1.5 rounded-full border border-purple-800 font-bold">対話調整</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">AI講師とプレビュー検証</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        <h3 class="text-xl font-bold text-white mb-3.5 font-display">AI講師とプレビュー検証</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
                             画面を見ながら「ボタン色を変えて」「リマインドを1時間前にも送って」と対話形式で微調整。
                         </p>
                     </div>
-                    <div class="bg-slate-950/80 rounded-xl p-3 border border-white/10 text-xs text-slate-300 font-mono">
-                        <i class="fa-solid fa-sliders text-purple-400 mr-1.5"></i> Interactive Live Preview
+                    <div class="bg-[#030712] rounded-xl p-3.5 border border-white/10 text-xs text-slate-300 font-mono">
+                        <i class="fa-solid fa-sliders text-purple-400 mr-2"></i> Interactive Live Preview
                     </div>
                 </div>
 
                 <!-- Step 4 -->
-                <div class="relative glass-panel glass-card-hover rounded-3xl p-6 flex flex-col justify-between group">
+                <div class="relative bento-card p-7 flex flex-col justify-between group">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <span class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-600 text-white font-extrabold text-xl flex items-center justify-center shadow-lg shadow-emerald-500/30">04</span>
-                            <span class="text-xs text-emerald-300 font-mono bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-800">運用スタート</span>
+                        <div class="flex items-center justify-between mb-8">
+                            <span class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 text-white font-extrabold text-2xl flex items-center justify-center shadow-lg shadow-emerald-500/30">04</span>
+                            <span class="text-xs text-emerald-300 font-mono bg-emerald-950/90 px-3.5 py-1.5 rounded-full border border-emerald-800 font-bold">運用スタート</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">1クリック公開＆業務自動化</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        <h3 class="text-xl font-bold text-white mb-3.5 font-display">1クリック公開＆業務自動化</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
                             システムを本番公開。予約受付、売上管理、リマインド送信がすべて自動で回り始めます。
                         </p>
                     </div>
-                    <div class="bg-slate-950/80 rounded-xl p-3 border border-white/10 text-xs text-slate-300 font-mono">
-                        <i class="fa-solid fa-rocket text-emerald-400 mr-1.5"></i> System Fully Deployed
+                    <div class="bg-[#030712] rounded-xl p-3.5 border border-white/10 text-xs text-slate-300 font-mono">
+                        <i class="fa-solid fa-rocket text-emerald-400 mr-2"></i> System Fully Deployed
                     </div>
                 </div>
             </div>
@@ -354,106 +352,106 @@
     </section>
 
     <!-- AI Instructor Interactive Demo Preview Section -->
-    <section id="ai-demo" class="py-28 relative border-t border-white/10">
+    <section id="ai-demo" class="py-32 relative border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 <!-- Left Description -->
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border border-purple-500/30 text-xs font-semibold text-purple-300">
+                <div class="lg:col-span-5 space-y-7">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full cyber-badge text-xs font-bold text-purple-300">
                         <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i>
                         <span>インタラクティブ学習体験</span>
                     </div>
-                    <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                    <h2 class="font-display text-4xl sm:text-5xl font-black text-white leading-tight">
                         AI講師との対話デモを<br>
                         プレビュー体験
                     </h2>
-                    <p class="text-slate-300 text-base leading-relaxed">
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
                         チュートリアル内で提供される「対話型AI学習システム」のプレビュー画面です。難解なマニュアルを読む必要はなく、チャット形式で質問や指示を出すだけで即座に回答とシステム反映が行われます。
                     </p>
 
                     <div class="space-y-4 pt-2">
-                        <div class="flex items-start gap-3.5">
-                            <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0 mt-0.5 border border-indigo-500/30">
-                                <i class="fa-solid fa-check text-xs"></i>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0 mt-0.5 border border-cyan-500/40">
+                                <i class="fa-solid fa-check text-sm"></i>
                             </div>
-                            <span class="text-sm text-slate-300 leading-normal">「何を質問すればいいか分からない」時もAIが次のアクションを提案</span>
+                            <span class="text-sm text-slate-300 leading-normal font-semibold">「何を質問すればいいか分からない」時もAIが次のアクションを提案</span>
                         </div>
-                        <div class="flex items-start gap-3.5">
-                            <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0 mt-0.5 border border-indigo-500/30">
-                                <i class="fa-solid fa-check text-xs"></i>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0 mt-0.5 border border-cyan-500/40">
+                                <i class="fa-solid fa-check text-sm"></i>
                             </div>
-                            <span class="text-sm text-slate-300 leading-normal">エラーが発生しても自動で原因を検知して修復プログラムを生成</span>
+                            <span class="text-sm text-slate-300 leading-normal font-semibold">エラーが発生しても自動で原因を検知して修復プログラムを生成</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Simulator Window -->
                 <div class="lg:col-span-7">
-                    <div class="glass-panel rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+                    <div class="code-glow-box rounded-3xl overflow-hidden shadow-2xl">
                         <!-- Chat Window Header -->
-                        <div class="bg-slate-950/90 px-6 py-4 border-b border-white/10 flex items-center justify-between">
-                            <div class="flex items-center gap-3.5">
+                        <div class="bg-[#030712] px-6 py-4 border-b border-white/10 flex items-center justify-between">
+                            <div class="flex items-center gap-4">
                                 <div class="relative">
-                                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white text-sm font-bold shadow-lg shadow-indigo-500/30">
+                                    <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-cyan-500 via-indigo-600 to-purple-600 flex items-center justify-center text-white text-base font-bold shadow-lg shadow-cyan-500/30">
                                         <i class="fa-solid fa-robot"></i>
                                     </div>
-                                    <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-slate-950 status-dot-active"></span>
+                                    <span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-[#030712] live-pulse-dot"></span>
                                 </div>
                                 <div>
-                                    <h4 class="text-sm font-bold text-white">Google Antigravity AI Instructor</h4>
-                                    <p class="text-[11px] font-mono text-indigo-300">オンライン受講生専用アシスタント</p>
+                                    <h4 class="text-base font-bold text-white">Google Antigravity AI Instructor</h4>
+                                    <p class="text-xs font-mono text-cyan-300">受講生専用対話型AIアシスタント</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-indigo-950 text-[11px] font-mono text-indigo-300 border border-indigo-800">Demo Mode</span>
+                                <span class="px-3.5 py-1 rounded-full bg-cyan-950 text-xs font-mono text-cyan-300 border border-cyan-800 font-bold">Demo Mode</span>
                             </div>
                         </div>
 
                         <!-- Chat Messages Container -->
-                        <div class="p-6 space-y-4 max-h-[440px] overflow-y-auto font-sans text-sm bg-[#070A11]/60">
+                        <div class="p-7 space-y-5 max-h-[460px] overflow-y-auto font-sans text-sm bg-[#030712]/70">
                             <!-- AI Message 1 -->
-                            <div class="flex gap-3 items-start">
-                                <div class="w-8 h-8 rounded-full bg-indigo-500/20 border border-indigo-500/40 text-indigo-400 flex items-center justify-center shrink-0 mt-1">
+                            <div class="flex gap-3.5 items-start">
+                                <div class="w-9 h-9 rounded-full bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 flex items-center justify-center shrink-0 mt-1">
                                     <i class="fa-solid fa-robot text-xs"></i>
                                 </div>
-                                <div class="glass-panel rounded-2xl rounded-tl-none p-4 text-slate-200 max-w-[85%]">
-                                    <p class="font-semibold text-xs text-indigo-400 mb-1 font-mono">AI講師</p>
+                                <div class="bento-card rounded-2xl rounded-tl-none p-4.5 text-slate-200 max-w-[85%]">
+                                    <p class="font-bold text-xs text-cyan-400 mb-1.5 font-mono">AI講師</p>
                                     こんにちは！Google Antigravity 2.0 チュートリアルへようこそ。どのような予約・管理システムを作りたいですか？
                                 </div>
                             </div>
 
                             <!-- User Message -->
-                            <div class="flex gap-3 items-start justify-end">
-                                <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl rounded-tr-none p-4 max-w-[85%] shadow-lg shadow-indigo-500/20">
-                                    <p class="font-semibold text-xs text-indigo-100 mb-1 font-mono">受講者（あなた）</p>
+                            <div class="flex gap-3.5 items-start justify-end">
+                                <div class="bg-gradient-to-r from-cyan-500 to-indigo-600 text-white rounded-2xl rounded-tr-none p-4.5 max-w-[85%] shadow-lg shadow-cyan-500/25">
+                                    <p class="font-bold text-xs text-cyan-100 mb-1.5 font-mono">受講者（あなた）</p>
                                     ヨガ教室のオンラインレッスン予約ページを作りたいです。日時指定予約とクレジット決済、前日リマインドメールを自動化したいです！
                                 </div>
-                                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-200 flex items-center justify-center shrink-0 mt-1 text-xs font-bold font-mono">
+                                <div class="w-9 h-9 rounded-full bg-slate-800 border border-slate-700 text-slate-200 flex items-center justify-center shrink-0 mt-1 text-xs font-bold font-mono">
                                     YOU
                                 </div>
                             </div>
 
                             <!-- AI Message 2 (Building status) -->
-                            <div class="flex gap-3 items-start">
-                                <div class="w-8 h-8 rounded-full bg-indigo-500/20 border border-indigo-500/40 text-indigo-400 flex items-center justify-center shrink-0 mt-1">
+                            <div class="flex gap-3.5 items-start">
+                                <div class="w-9 h-9 rounded-full bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 flex items-center justify-center shrink-0 mt-1">
                                     <i class="fa-solid fa-robot text-xs"></i>
                                 </div>
-                                <div class="glass-panel rounded-2xl rounded-tl-none p-4 text-slate-200 max-w-[85%] space-y-3">
-                                    <p class="font-semibold text-xs text-indigo-400 font-mono">AI講師</p>
+                                <div class="bento-card rounded-2xl rounded-tl-none p-4.5 text-slate-200 max-w-[85%] space-y-3.5">
+                                    <p class="font-bold text-xs text-cyan-400 font-mono">AI講師</p>
                                     <p>ご要件を理解しました！以下のモジュールを組み合わせたフルスタックシステムを自動生成します：</p>
                                     
-                                    <div class="bg-slate-950 rounded-xl p-3.5 border border-white/10 space-y-2 text-xs font-mono">
+                                    <div class="bg-[#030712] rounded-xl p-4 border border-white/10 space-y-2.5 text-xs font-mono">
                                         <div class="flex items-center justify-between text-emerald-400">
                                             <span>[✓] 予約カレンダーUI生成</span>
-                                            <span class="text-[10px] bg-emerald-950 px-2 py-0.5 rounded">Complete</span>
+                                            <span class="text-[10px] bg-emerald-950 px-2.5 py-0.5 rounded font-bold">Complete</span>
                                         </div>
                                         <div class="flex items-center justify-between text-emerald-400">
                                             <span>[✓] 決済ゲートウェイAPI接続</span>
-                                            <span class="text-[10px] bg-emerald-950 px-2 py-0.5 rounded">Complete</span>
+                                            <span class="text-[10px] bg-emerald-950 px-2.5 py-0.5 rounded font-bold">Complete</span>
                                         </div>
-                                        <div class="flex items-center justify-between text-blue-400">
+                                        <div class="flex items-center justify-between text-cyan-400">
                                             <span>[⚡] 自動メール送信トリガー設定</span>
-                                            <span class="text-[10px] bg-blue-950 px-2 py-0.5 rounded animate-pulse">In Progress...</span>
+                                            <span class="text-[10px] bg-cyan-950 px-2.5 py-0.5 rounded animate-pulse font-bold">In Progress...</span>
                                         </div>
                                     </div>
                                     <p class="text-xs text-slate-300">プレビューが完成しました！画面右上のボタンから実際の動作をご確認ください。</p>
@@ -462,9 +460,9 @@
                         </div>
 
                         <!-- Chat Input bar preview -->
-                        <div class="p-4 bg-slate-950/90 border-t border-white/10 flex items-center gap-3">
-                            <input type="text" disabled value="「デザインをもっと温かみのあるオレンジ基調に変更して」" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 text-xs text-slate-400 cursor-not-allowed font-mono">
-                            <button disabled class="bg-indigo-600/50 text-white px-5 py-3 rounded-xl text-xs font-bold flex items-center gap-2 cursor-not-allowed shrink-0">
+                        <div class="p-4 bg-[#030712] border-t border-white/10 flex items-center gap-3">
+                            <input type="text" disabled value="「デザインをもっと温かみのあるオレンジ基調に変更して」" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-slate-400 cursor-not-allowed font-mono">
+                            <button disabled class="bg-cyan-600/50 text-white px-5 py-3.5 rounded-xl text-xs font-bold flex items-center gap-2 cursor-not-allowed shrink-0">
                                 <span>送信</span>
                                 <i class="fa-solid fa-paper-plane"></i>
                             </button>
@@ -476,61 +474,61 @@
     </section>
 
     <!-- Registration / CTA Section -->
-    <section id="register" class="py-28 relative border-t border-white/10">
+    <section id="register" class="py-32 relative border-t border-white/10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <div class="glass-panel rounded-3xl p-8 sm:p-14 shadow-2xl relative overflow-hidden border border-indigo-500/30">
+            <div class="bento-card rounded-3xl p-8 sm:p-16 shadow-2xl relative overflow-hidden">
                 <!-- Background Accent Glow -->
-                <div class="absolute -top-32 -right-32 w-80 h-80 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="absolute -bottom-32 -left-32 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="glow-orb-cyan -top-40 -right-40"></div>
+                <div class="glow-orb-purple -bottom-40 -left-40"></div>
 
-                <span class="inline-block px-4 py-1.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 text-xs font-bold tracking-wider mb-6 font-mono">
+                <span class="inline-block px-5 py-2 rounded-full cyber-badge text-cyan-300 text-xs font-extrabold tracking-wider mb-8 font-mono">
                     受講申し込み受付中（定員に達し次第終了）
                 </span>
 
-                <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight mb-6">
+                <h2 class="font-display text-4xl sm:text-6xl font-black text-white leading-tight mb-8">
                     今すぐAIで自社システムを<br class="hidden sm:inline">
                     自動化する体験を始めましょう
                 </h2>
 
-                <p class="text-slate-300 text-base sm:text-lg mb-10 max-w-2xl mx-auto">
+                <p class="text-slate-300 text-base sm:text-lg mb-12 max-w-2xl mx-auto">
                     「Google Antigravity 2.0 フルスタック開発チュートリアル」で、コードを書かずにビジネスを加速させる次世代のシステム構築手法を身につけてください。
                 </p>
 
                 <!-- Course Included Perks -->
-                <div class="grid sm:grid-cols-3 gap-4 mb-10 text-left">
-                    <div class="p-5 rounded-2xl glass-panel">
-                        <i class="fa-solid fa-video text-blue-400 text-xl mb-3"></i>
-                        <h4 class="font-bold text-white text-sm">全4ステップ動画講座</h4>
-                        <p class="text-slate-400 text-xs mt-1 leading-relaxed">自分のペースでいつでも見返せる動画教材セット</p>
+                <div class="grid sm:grid-cols-3 gap-5 mb-12 text-left">
+                    <div class="p-6 bento-card">
+                        <i class="fa-solid fa-video text-cyan-400 text-2xl mb-4"></i>
+                        <h4 class="font-bold text-white text-base font-display">全4ステップ動画講座</h4>
+                        <p class="text-slate-300 text-xs mt-2 leading-relaxed">自分のペースでいつでも見返せる動画教材セット</p>
                     </div>
-                    <div class="p-5 rounded-2xl glass-panel">
-                        <i class="fa-solid fa-robot text-purple-400 text-xl mb-3"></i>
-                        <h4 class="font-bold text-white text-sm">対話型AI講師システム</h4>
-                        <p class="text-slate-400 text-xs mt-1 leading-relaxed">24時間いつでも質問・指示ができるAI環境</p>
+                    <div class="p-6 bento-card">
+                        <i class="fa-solid fa-robot text-purple-400 text-2xl mb-4"></i>
+                        <h4 class="font-bold text-white text-base font-display">対話型AI講師システム</h4>
+                        <p class="text-slate-300 text-xs mt-2 leading-relaxed">24時間いつでも質問・指示ができるAI環境</p>
                     </div>
-                    <div class="p-5 rounded-2xl glass-panel">
-                        <i class="fa-solid fa-file-code text-emerald-400 text-xl mb-3"></i>
-                        <h4 class="font-bold text-white text-sm">プロンプトテンプレート</h4>
-                        <p class="text-slate-400 text-xs mt-1 leading-relaxed">コピーして使える業種別システム生成プロンプト集</p>
+                    <div class="p-6 bento-card">
+                        <i class="fa-solid fa-file-code text-emerald-400 text-2xl mb-4"></i>
+                        <h4 class="font-bold text-white text-base font-display">プロンプトテンプレート</h4>
+                        <p class="text-slate-300 text-xs mt-2 leading-relaxed">コピーして使える業種別システム生成プロンプト集</p>
                     </div>
                 </div>
 
                 <!-- Registration Form -->
                 <form id="reservation-form" onsubmit="handleReservationSubmit(event)" class="max-w-md mx-auto space-y-4">
                     <div>
-                        <input type="text" id="user-name" required placeholder="お名前" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/30 transition-all text-sm">
+                        <input type="text" id="user-name" required placeholder="お名前" class="w-full px-5 py-4 rounded-2xl bg-[#030712] border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm">
                     </div>
                     <div>
-                        <input type="email" id="user-email" required placeholder="メールアドレス（チュートリアル案内を送付）" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/30 transition-all text-sm">
+                        <input type="email" id="user-email" required placeholder="メールアドレス（チュートリアル案内を送付）" class="w-full px-5 py-4 rounded-2xl bg-[#030712] border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm">
                     </div>
                     <div>
-                        <input type="text" id="user-notes" placeholder="構築したいシステムやご要望（任意）" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/30 transition-all text-sm">
+                        <input type="text" id="user-notes" placeholder="構築したいシステムやご要望（任意）" class="w-full px-5 py-4 rounded-2xl bg-[#030712] border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm">
                     </div>
-                    <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-bold text-lg shadow-xl shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2">
+                    <button type="submit" id="submit-btn" class="w-full py-4.5 rounded-2xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 text-white font-extrabold text-lg shadow-2xl shadow-cyan-500/40 hover:shadow-cyan-500/60 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5">
                         <span>受講予約を完了する（無料チュートリアル）</span>
                         <i class="fa-solid fa-paper-plane text-sm"></i>
                     </button>
-                    <p class="text-[11px] text-slate-400 mt-2">※ご入力いただいた情報はチュートリアル提供目的のみに使用いたします。</p>
+                    <p class="text-xs text-slate-400 mt-3">※ご入力いただいた情報はチュートリアル提供目的のみに使用いたします。</p>
                 </form>
 
                 <!-- Load App Config -->
@@ -575,13 +573,13 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-[#04060B] border-t border-white/10 text-slate-400 text-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-            <div class="flex items-center justify-center space-x-2">
-                <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-bold text-xs flex items-center justify-center shadow-md">
+    <footer class="py-14 bg-[#01040A] border-t border-white/10 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+            <div class="flex items-center justify-center space-x-3">
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 text-white font-bold text-sm flex items-center justify-center shadow-lg shadow-cyan-500/30">
                     <i class="fa-solid fa-bolt"></i>
                 </div>
-                <span class="font-display font-extrabold text-white text-base">Google Antigravity 2.0 Tutorial</span>
+                <span class="font-display font-black text-white text-lg">Google Antigravity 2.0 Tutorial</span>
             </div>
             <p class="text-xs text-slate-400">Google Antigravity 2.0 フルスタック開発チュートリアル プロモーションページ</p>
             <p class="text-xs text-slate-500 font-mono">&copy; 2026 Google Antigravity 2.0 All rights reserved.</p>
