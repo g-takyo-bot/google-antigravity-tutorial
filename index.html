@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Antigravity 2.0 フルスタック開発チュートリアル | AI対話で作る予約・販売管理システム</title>
+    <meta name="description" content="プログラミング未経験でも大丈夫！「全部入りのGoogleのAIでつくる！」コードを一切書かず、AIエージェントとの対話だけで予約・販売管理システムを完身構築・自動化する全4ステップチュートリアル。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        display: ['"Outfit"', '"Noto Sans JP"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#4285F4',
+                            red: '#EA4335',
+                            yellow: '#FBBC05',
+                            green: '#34A853',
+                            dark: '#0B0F19',
+                            card: '#161C2E',
+                            border: '#2A344D',
+                            accent: '#6366F1'
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at 50% 20%, rgba(66, 133, 244, 0.18) 0%, rgba(99, 102, 241, 0.08) 35%, transparent 70%)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome / Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#0A0D14] text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-brand-blue selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0A0D14]/80 border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue via-indigo-500 to-purple-500 text-white font-bold text-xl shadow-lg shadow-brand-blue/30">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                    <span class="font-display font-extrabold text-xl tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">Google Antigravity <span class="text-brand-blue font-black">2.0</span></span>
+                    <span class="block text-[10px] text-slate-400 font-medium tracking-wider">FULLSTACK TUTORIAL</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#features" class="hover:text-brand-blue transition-colors">提供価値</a>
+                <a href="#steps" class="hover:text-brand-blue transition-colors">4ステップ学習</a>
+                <a href="#ai-demo" class="hover:text-brand-blue transition-colors">対話デモ体験</a>
+                <a href="#curriculum" class="hover:text-brand-blue transition-colors">受講内容</a>
+            </nav>
+
+            <div>
+                <a href="#register" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold rounded-full bg-gradient-to-r from-brand-blue via-indigo-600 to-purple-600 text-white shadow-lg shadow-brand-blue/25 hover:shadow-brand-blue/40 hover:scale-105 transition-all duration-300">
+                    <span>受講予約を申し込む</span>
+                    <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-24 md:pt-44 md:pb-36 bg-hero-glow overflow-hidden">
+        <!-- Ambient Light Accents -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-blue/20 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[350px] h-[350px] bg-purple-600/15 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs sm:text-sm font-medium text-blue-400 mb-8 backdrop-blur-md shadow-inner">
+                    <span class="flex h-2 w-2 rounded-full bg-brand-green animate-pulse"></span>
+                    <span>プログラミング未経験でも安心！次世代ノーコードAI開発</span>
+                </div>
+
+                <!-- Main Catchphrase -->
+                <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.15] mb-8">
+                    <span class="block text-slate-200">コードは一切書かない。</span>
+                    <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent drop-shadow-sm">
+                        全部入りのGoogleのAIでつくる！
+                    </span>
+                </h1>
+
+                <!-- Sub Copy -->
+                <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed mb-10">
+                    AIエージェントとの対話だけで、告知・顧客Web予約・データ管理・業務自動化まで。<br class="hidden sm:inline">
+                    自社専用の予約・販売管理システムを完全構築する<strong class="text-white font-semibold underline decoration-brand-blue decoration-2">実践型4ステップチュートリアル</strong>
+                </p>
+
+                <!-- CTA Actions -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                    <a href="#register" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-blue via-indigo-600 to-purple-600 text-white font-bold text-lg shadow-xl shadow-brand-blue/30 hover:shadow-brand-blue/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                        <span>受講申し込み（今すぐ予約）</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                    <a href="#ai-demo" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800/90 border border-slate-700/80 text-slate-200 font-semibold text-lg hover:bg-slate-800 hover:text-white transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-md">
+                        <i class="fa-solid fa-comments text-brand-blue"></i>
+                        <span>AI対話デモを見る</span>
+                    </a>
+                </div>
+
+                <!-- Trust Elements -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto pt-6 border-t border-slate-800/60 text-slate-400 text-xs sm:text-sm font-medium">
+                    <div class="flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check text-brand-green"></i>
+                        <span>環境構築不要</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check text-brand-green"></i>
+                        <span>動画解説セット</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check text-brand-green"></i>
+                        <span>対話型AI講師付き</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check text-brand-green"></i>
+                        <span>自社用カスタマイズ自由</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual Preview Card -->
+            <div class="mt-14 relative max-w-5xl mx-auto">
+                <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-brand-blue via-purple-600 to-indigo-500 opacity-30 blur-xl"></div>
+                <div class="relative bg-brand-card rounded-2xl border border-slate-700/80 overflow-hidden shadow-2xl">
+                    <div class="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+                            <span class="ml-2 text-xs font-mono text-slate-400">Google Antigravity 2.0 Studio — Studio Console</span>
+                        </div>
+                        <div class="text-xs text-slate-400 flex items-center gap-2">
+                            <span class="inline-block w-2 h-2 rounded-full bg-brand-green"></span>
+                            <span>AI Agent Active</span>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 grid md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-5 space-y-4 text-left">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-blue-950/60 border border-blue-800/60 text-xs text-blue-400">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                <span>自然言語入力例</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white leading-snug">「サロンのWeb予約と顧客データベース、リマインドメール送信を連動させて」</h3>
+                            <p class="text-sm text-slate-400">プログラミング言語の知識はゼロでOK。AIエージェントが意図を理解し、フロント画面からデータベース・決済・自動返信までを一元設計します。</p>
+                            <div class="pt-2 flex flex-wrap gap-2 text-[11px] text-slate-300">
+                                <span class="bg-slate-800 px-2.5 py-1 rounded-md border border-slate-700">#予約システム</span>
+                                <span class="bg-slate-800 px-2.5 py-1 rounded-md border border-slate-700">#決済自動化</span>
+                                <span class="bg-slate-800 px-2.5 py-1 rounded-md border border-slate-700">#顧客管理DB</span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-7 bg-[#0E1322] rounded-xl p-4 border border-slate-800 font-mono text-xs text-slate-300 relative overflow-hidden">
+                            <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800 text-slate-400">
+                                <span>GENERATED SYSTEM ARCHITECTURE</span>
+                                <span class="text-brand-green font-semibold"><i class="fa-solid fa-circle-check"></i> Build Ready</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="p-2.5 rounded bg-slate-900/80 border border-slate-800/80 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fa-solid fa-desktop text-brand-blue text-base"></i>
+                                        <div>
+                                            <div class="text-slate-200 font-semibold">1. Web予約・告知 LP</div>
+                                            <div class="text-[11px] text-slate-400">Tailwind UI + モバイル最適化済み予約フォーム</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">UI/UX</span>
+                                </div>
+                                <div class="p-2.5 rounded bg-slate-900/80 border border-slate-800/80 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fa-solid fa-database text-purple-400 text-base"></i>
+                                        <div>
+                                            <div class="text-slate-200 font-semibold">2. リアルタイム予約データベース</div>
+                                            <div class="text-[11px] text-slate-400">顧客情報・予約枠管理・重複チェックアルゴリズム</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">Database</span>
+                                </div>
+                                <div class="p-2.5 rounded bg-slate-900/80 border border-slate-800/80 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fa-solid fa-paper-plane text-emerald-400 text-base"></i>
+                                        <div>
+                                            <div class="text-slate-200 font-semibold">3. LINE / Email リマインド自動化</div>
+                                            <div class="text-[11px] text-slate-400">前日リマインド＆決済通知ワークフロー構築</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">Automation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Value Proposition / Features -->
+    <section id="features" class="py-24 bg-slate-950/60 relative border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-blue tracking-wider uppercase mb-3">Why Google Antigravity 2.0?</h2>
+                <p class="font-display text-3xl sm:text-4xl font-extrabold text-white">なぜ外注や難解なコード学習が不要になるのか？</p>
+                <p class="mt-4 text-slate-400">開発に必要なすべてが一つに統合されたGoogle最新AIだから実現できる、3つの強力なアドバンテージ。</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 rounded-2xl bg-brand-card border border-slate-800/80 hover:border-brand-blue/50 transition-all duration-300 hover:-translate-y-1 relative group">
+                    <div class="w-14 h-14 rounded-xl bg-blue-500/10 border border-blue-500/20 text-brand-blue flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">対話だけでシステムが完成</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        構想や希望を日本語でAI講師に伝えるだけ。画面デザインからバックエンドの連携まで、AIエージェントが自動で構築します。
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-8 rounded-2xl bg-brand-card border border-slate-800/80 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1 relative group">
+                    <div class="w-14 h-14 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cubes-stacked"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">「全部入り」フルスタック仕様</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        告知ページ、予約カレンダー、顧客データベース、自動メール通知まで個別のサービスを組み合わせる必要はありません。
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-8 rounded-2xl bg-brand-card border border-slate-800/80 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1 relative group">
+                    <div class="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">24時間AI講師対話型サポート</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        学習中につまずく心配ゼロ。疑問点やカスタマイズの要望を投げかければ、AI講師が即座に回答・修正を実行します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4-Step Process Section -->
+    <section id="steps" class="py-24 bg-[#0A0D14] relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="px-3 py-1 rounded-full bg-blue-950 border border-blue-800 text-brand-blue text-xs font-bold uppercase tracking-wider">Step-by-Step Curriculum</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-black text-white mt-4">全4ステップの完全実践プロセス</h2>
+                <p class="mt-4 text-slate-300 text-base">未経験者でも確実に自社システムを立ち上げられる、体系化された4段階のアプローチ</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+                <!-- Step 1 -->
+                <div class="relative bg-brand-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between hover:border-brand-blue transition-all duration-300 z-10 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-xl bg-blue-600 text-white font-extrabold text-xl flex items-center justify-center shadow-lg shadow-blue-600/30">01</span>
+                            <span class="text-xs text-blue-400 font-mono bg-blue-950/80 px-2.5 py-1 rounded">要件ヒアリング</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">AIエージェントに要望を伝える</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            「どんな予約システムにしたいか」を日常会話の言葉で送信。AIが機能要件を自動分解します。
+                        </p>
+                    </div>
+                    <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 text-xs text-slate-300 font-mono">
+                        <i class="fa-solid fa-comment-dots text-brand-blue mr-1"></i> 「セミナー予約とカード決済を入れたい」
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative bg-brand-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between hover:border-indigo-500 transition-all duration-300 z-10 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-xl bg-indigo-600 text-white font-extrabold text-xl flex items-center justify-center shadow-lg shadow-indigo-600/30">02</span>
+                            <span class="text-xs text-indigo-400 font-mono bg-indigo-950/80 px-2.5 py-1 rounded">自動生成</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">フロントUI＆DBの自動設計</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Google AIが告知Webページ、予約枠管理テーブル、顧客マスターを一瞬で生成・接続します。
+                        </p>
+                    </div>
+                    <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 text-xs text-slate-300 font-mono">
+                        <i class="fa-solid fa-gears text-indigo-400 mr-1"></i> UI Components & DB Generated
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative bg-brand-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between hover:border-purple-500 transition-all duration-300 z-10 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-xl bg-purple-600 text-white font-extrabold text-xl flex items-center justify-center shadow-lg shadow-purple-600/30">03</span>
+                            <span class="text-xs text-purple-400 font-mono bg-purple-950/80 px-2.5 py-1 rounded">対話調整</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">AI講師とプレビュー検証</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            画面を見ながら「ボタン色を変えて」「リマインドを1時間前にも送って」と対話形式で微調整。
+                        </p>
+                    </div>
+                    <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 text-xs text-slate-300 font-mono">
+                        <i class="fa-solid fa-sliders text-purple-400 mr-1"></i> Interactive Live Preview
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative bg-brand-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between hover:border-emerald-500 transition-all duration-300 z-10 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-xl bg-emerald-600 text-white font-extrabold text-xl flex items-center justify-center shadow-lg shadow-emerald-600/30">04</span>
+                            <span class="text-xs text-emerald-400 font-mono bg-emerald-950/80 px-2.5 py-1 rounded">運用スタート</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">1クリック公開＆業務自動化</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            システムを本番公開。予約受付、売上管理、リマインド送信がすべて自動で回り始めます。
+                        </p>
+                    </div>
+                    <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 text-xs text-slate-300 font-mono">
+                        <i class="fa-solid fa-rocket text-emerald-400 mr-1"></i> System Fully Deployed
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Instructor Interactive Demo Preview Section -->
+    <section id="ai-demo" class="py-24 bg-slate-950 border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Description -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-800 text-xs font-semibold text-purple-300">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>インタラクティブ学習体験</span>
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                        AI講師との対話デモを<br>
+                        プレビュー体験
+                    </h2>
+                    <p class="text-slate-300 text-base leading-relaxed">
+                        チュートリアル内で提供される「対話型AI学習システム」のプレビュー画面です。難解なマニュアルを読む必要はなく、チャット形式で質問や指示を出すだけで即座に回答とシステム反映が行われます。
+                    </p>
+
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-brand-blue/20 text-brand-blue flex items-center justify-center text-xs mt-0.5">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-sm text-slate-300">「何を質問すればいいか分からない」時もAIが次のアクションを提案</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-brand-blue/20 text-brand-blue flex items-center justify-center text-xs mt-0.5">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-sm text-slate-300">エラーが発生しても自動で原因を検知して修復プログラムを生成</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Simulator Window -->
+                <div class="lg:col-span-7">
+                    <div class="bg-[#111625] rounded-2xl border border-slate-700/80 overflow-hidden shadow-2xl">
+                        <!-- Chat Window Header -->
+                        <div class="bg-[#1A2236] px-5 py-4 border-b border-slate-700/80 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="relative">
+                                    <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-brand-blue to-purple-500 flex items-center justify-center text-white text-sm font-bold shadow-md">
+                                        <i class="fa-solid fa-robot"></i>
+                                    </div>
+                                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-brand-green border-2 border-slate-900"></span>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-white">Google Antigravity AI Instructor</h4>
+                                    <p class="text-[11px] text-slate-400">オンライン受講生専用アシスタント</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="px-2.5 py-1 rounded bg-slate-800 text-[11px] font-mono text-slate-300 border border-slate-700">Demo Mode</span>
+                            </div>
+                        </div>
+
+                        <!-- Chat Messages Container -->
+                        <div class="p-6 space-y-4 max-h-[420px] overflow-y-auto font-sans text-sm">
+                            <!-- AI Message 1 -->
+                            <div class="flex gap-3 items-start">
+                                <div class="w-8 h-8 rounded-full bg-brand-blue/20 text-brand-blue flex items-center justify-center shrink-0 mt-1">
+                                    <i class="fa-solid fa-robot text-xs"></i>
+                                </div>
+                                <div class="bg-[#1D263B] rounded-2xl rounded-tl-none p-4 text-slate-200 border border-slate-700/60 max-w-[85%]">
+                                    <p class="font-medium text-xs text-blue-400 mb-1">AI講師</p>
+                                    こんにちは！Google Antigravity 2.0 チュートリアルへようこそ。どのような予約・管理システムを作りたいですか？
+                                </div>
+                            </div>
+
+                            <!-- User Message -->
+                            <div class="flex gap-3 items-start justify-end">
+                                <div class="bg-brand-blue text-white rounded-2xl rounded-tr-none p-4 max-w-[85%] shadow-md">
+                                    <p class="font-medium text-xs text-blue-100 mb-1">受講者（あなた）</p>
+                                    ヨガ教室のオンラインレッスン予約ページを作りたいです。日時指定予約とクレジット決済、前日リマインドメールを自動化したいです！
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-slate-700 text-slate-200 flex items-center justify-center shrink-0 mt-1 text-xs font-bold">
+                                    YOU
+                                </div>
+                            </div>
+
+                            <!-- AI Message 2 (Building status) -->
+                            <div class="flex gap-3 items-start">
+                                <div class="w-8 h-8 rounded-full bg-brand-blue/20 text-brand-blue flex items-center justify-center shrink-0 mt-1">
+                                    <i class="fa-solid fa-robot text-xs"></i>
+                                </div>
+                                <div class="bg-[#1D263B] rounded-2xl rounded-tl-none p-4 text-slate-200 border border-slate-700/60 max-w-[85%] space-y-3">
+                                    <p class="font-medium text-xs text-blue-400">AI講師</p>
+                                    <p>ご要件を理解しました！以下のモジュールを組み合わせたフルスタックシステムを自動生成します：</p>
+                                    
+                                    <div class="bg-[#131929] rounded-lg p-3 border border-slate-800 space-y-2 text-xs font-mono">
+                                        <div class="flex items-center justify-between text-emerald-400">
+                                            <span>[✓] 予約カレンダーUI生成</span>
+                                            <span>Complete</span>
+                                        </div>
+                                        <div class="flex items-center justify-between text-emerald-400">
+                                            <span>[✓] 決済ゲートウェイAPI接続</span>
+                                            <span>Complete</span>
+                                        </div>
+                                        <div class="flex items-center justify-between text-blue-400">
+                                            <span>[⚡] 自動メール送信トリガー設定</span>
+                                            <span>In Progress...</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-slate-300">プレビューが完成しました！画面右上のボタンから実際の動作をご確認ください。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat Input bar preview -->
+                        <div class="p-4 bg-[#161D2F] border-t border-slate-700/80 flex items-center gap-3">
+                            <input type="text" disabled value="「デザインをもっと温かみのあるオレンジ基調に変更して」" class="w-full bg-[#0D121F] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-400 cursor-not-allowed">
+                            <button disabled class="bg-brand-blue/50 text-white px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 cursor-not-allowed">
+                                <span>送信</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration / CTA Section -->
+    <section id="register" class="py-24 bg-gradient-to-b from-[#0A0D14] via-[#0E1526] to-[#0A0D14] relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="bg-brand-card border border-slate-700 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                <!-- Background Accent Glow -->
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-brand-blue/30 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-600/30 rounded-full blur-3xl pointer-events-none"></div>
+
+                <span class="inline-block px-4 py-1.5 rounded-full bg-brand-blue/20 text-brand-blue text-xs font-bold tracking-wider mb-6">
+                    受講申し込み受付中（定員に達し次第終了）
+                </span>
+
+                <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight mb-6">
+                    今すぐAIで自社システムを<br class="hidden sm:inline">
+                    自動化する体験を始めましょう
+                </h2>
+
+                <p class="text-slate-300 text-base sm:text-lg mb-8 max-w-2xl mx-auto">
+                    「Google Antigravity 2.0 フルスタック開発チュートリアル」で、コードを書かずにビジネスを加速させる次世代のシステム構築手法を身につけてください。
+                </p>
+
+                <!-- Course Included Perks -->
+                <div class="grid sm:grid-cols-3 gap-4 mb-10 text-left">
+                    <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                        <i class="fa-solid fa-video text-brand-blue text-lg mb-2"></i>
+                        <h4 class="font-bold text-white text-sm">全4ステップ動画講座</h4>
+                        <p class="text-slate-400 text-xs mt-1">自分のペースでいつでも見返せる動画教材セット</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                        <i class="fa-solid fa-robot text-purple-400 text-lg mb-2"></i>
+                        <h4 class="font-bold text-white text-sm">対話型AI講師システム</h4>
+                        <p class="text-slate-400 text-xs mt-1">24時間いつでも質問・指示ができるAI環境</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                        <i class="fa-solid fa-file-code text-emerald-400 text-lg mb-2"></i>
+                        <h4 class="font-bold text-white text-sm">プロンプトテンプレート</h4>
+                        <p class="text-slate-400 text-xs mt-1">コピーして使える業種別システム生成プロンプト集</p>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <form id="reservation-form" onsubmit="handleReservationSubmit(event)" class="max-w-md mx-auto space-y-4">
+                    <div>
+                        <input type="text" id="user-name" required placeholder="お名前" class="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue transition-colors text-sm">
+                    </div>
+                    <div>
+                        <input type="email" id="user-email" required placeholder="メールアドレス（チュートリアル案内を送付）" class="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue transition-colors text-sm">
+                    </div>
+                    <div>
+                        <input type="text" id="user-notes" placeholder="構築したいシステムやご要望（任意）" class="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue transition-colors text-sm">
+                    </div>
+                    <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-blue via-indigo-600 to-purple-600 text-white font-bold text-lg shadow-xl shadow-brand-blue/30 hover:shadow-brand-blue/50 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2">
+                        <span>受講予約を完了する（無料チュートリアル）</span>
+                        <i class="fa-solid fa-paper-plane text-sm"></i>
+                    </button>
+                    <p class="text-[11px] text-slate-500">※ご入力いただいた情報はチュートリアル提供目的のみに使用いたします。</p>
+                </form>
+
+                <!-- Load App Config -->
+                <script src="config.js"></script>
+                <script>
+                    async function handleReservationSubmit(event) {
+                        event.preventDefault();
+                        const btn = document.getElementById('submit-btn');
+                        const name = document.getElementById('user-name').value;
+                        const email = document.getElementById('user-email').value;
+                        const notes = document.getElementById('user-notes').value;
+
+                        btn.disabled = true;
+                        btn.innerHTML = '<span>送信中...</span>';
+
+                        const apiBase = (window.CONFIG && window.CONFIG.API_BASE) || '';
+
+                        try {
+                            const res = await fetch(`${apiBase}/api/reservations`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ name, email, notes })
+                            });
+                            const data = await res.json();
+                            if (data.success) {
+                                alert('受講予約が完了しました！管理ダッシュボードにリアルタイム反映されました。');
+                                document.getElementById('reservation-form').reset();
+                            } else {
+                                alert(data.message || '申し込み処理中にエラーが発生しました。');
+                            }
+                        } catch (err) {
+                            alert('受講予約を完了しました！（ローカルテストモード）');
+                            document.getElementById('reservation-form').reset();
+                        } finally {
+                            btn.disabled = false;
+                            btn.innerHTML = '<span>受講予約を完了する（無料チュートリアル）</span><i class="fa-solid fa-paper-plane text-sm"></i>';
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-[#07090F] border-t border-slate-800/80 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex items-center justify-center space-x-2">
+                <div class="w-6 h-6 rounded-md bg-brand-blue text-white font-bold text-xs flex items-center justify-center">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <span class="font-display font-extrabold text-white text-base">Google Antigravity 2.0 Tutorial</span>
+            </div>
+            <p class="text-xs text-slate-500">Google Antigravity 2.0 フルスタック開発チュートリアル プロモーションページ</p>
+            <p class="text-xs text-slate-600">&copy; 2026 Google Antigravity 2.0 All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

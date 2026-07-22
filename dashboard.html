@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Antigravity 2.0 Studio — 管理ダッシュボード</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        display: ['"Outfit"', '"Noto Sans JP"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#4285F4',
+                            red: '#EA4335',
+                            yellow: '#FBBC05',
+                            green: '#34A853',
+                            dark: '#0B0F19',
+                            card: '#161C2E',
+                            border: '#2A344D',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome / Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#0B0F19] text-slate-100 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-[#121827] border-b border-slate-800 h-16 flex items-center justify-between px-6 sticky top-0 z-40">
+        <div class="flex items-center space-x-3">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-blue via-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-brand-blue/30">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                    <span class="font-display font-extrabold text-lg text-white">Google Antigravity <span class="text-brand-blue">2.0</span></span>
+                    <span class="block text-[9px] text-slate-400 font-mono tracking-wider">ADMIN CONTROL CENTER</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <a href="index.html" class="text-xs text-slate-400 hover:text-white transition-colors flex items-center gap-1">
+                <i class="fa-solid fa-external-link text-[10px]"></i>
+                <span>LPに戻る</span>
+            </a>
+            <div class="h-4 w-px bg-slate-700"></div>
+            <div class="flex items-center gap-2 text-xs text-slate-300">
+                <div class="w-7 h-7 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-brand-blue">
+                    A
+                </div>
+                <span>admin@example.com</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden">
+        <!-- Sidebar Navigation -->
+        <aside class="w-64 bg-[#121827]/80 border-r border-slate-800 p-4 hidden md:flex flex-col justify-between">
+            <div class="space-y-6">
+                <div>
+                    <div class="text-[10px] font-bold text-slate-500 tracking-wider uppercase px-3 mb-2">Main Menu</div>
+                    <nav class="space-y-1">
+                        <a href="#stats-overview" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-brand-blue/15 text-brand-blue font-semibold text-sm border border-brand-blue/20">
+                            <i class="fa-solid fa-chart-pie w-4 text-center"></i>
+                            <span>概要・アナリティクス</span>
+                        </a>
+                        <a href="#scheduled-tasks" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white transition-colors text-sm font-semibold">
+                            <i class="fa-solid fa-clock-rotate-left w-4 text-center text-yellow-400"></i>
+                            <span>Scheduled Tasks</span>
+                            <span class="ml-auto bg-yellow-500/20 text-yellow-400 text-[10px] px-2 py-0.5 rounded-full font-mono border border-yellow-500/30">Auto</span>
+                        </a>
+                        <a href="#market-trend-widget" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-slate-200 transition-colors text-sm">
+                            <i class="fa-solid fa-fire w-4 text-center text-emerald-400"></i>
+                            <span>市場トレンド監視</span>
+                        </a>
+                        <a href="#reservations-list" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-slate-200 transition-colors text-sm">
+                            <i class="fa-solid fa-users w-4 text-center"></i>
+                            <span>受講予約・顧客管理</span>
+                        </a>
+                        <a href="#progress-monitor" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-slate-200 transition-colors text-sm">
+                            <i class="fa-solid fa-list-check w-4 text-center"></i>
+                            <span>4ステップ学習進捗</span>
+                        </a>
+                        <a href="#ai-logs" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-slate-200 transition-colors text-sm">
+                            <i class="fa-solid fa-robot w-4 text-center"></i>
+                            <span>AI講師対話ログ</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-xs space-y-2">
+                <div class="flex items-center justify-between text-slate-400">
+                    <span>Task Scheduler Engine</span>
+                    <span class="inline-flex items-center gap-1 text-emerald-400 font-mono">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Active
+                    </span>
+                </div>
+                <div class="text-[11px] text-slate-500 font-mono">Cron: Active (* * * * *)</div>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Content -->
+        <main class="flex-1 p-6 md:p-8 overflow-y-auto space-y-8">
+
+            <!-- Section 1: Analytics KPI Cards -->
+            <section id="stats-overview" class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-chart-line text-brand-blue"></i>
+                        <span>リアルタイム概要アナリティクス</span>
+                    </h2>
+                    <button onclick="refreshAllData()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 font-medium transition-colors flex items-center gap-1.5">
+                        <i class="fa-solid fa-rotate-right text-[11px]"></i>
+                        <span>手動更新</span>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div class="bg-[#161C2E] border border-slate-800 rounded-2xl p-5 relative overflow-hidden">
+                        <div class="text-xs font-medium text-slate-400 mb-1">受講予約 総数</div>
+                        <div id="stat-total" class="text-3xl font-extrabold font-display text-white">--</div>
+                        <div class="mt-2 text-[11px] text-slate-400 flex items-center gap-1">
+                            <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-arrow-up"></i> +12%</span>
+                            <span>前週比</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#161C2E] border border-slate-800 rounded-2xl p-5 relative overflow-hidden">
+                        <div class="text-xs font-medium text-slate-400 mb-1">本日のお申し込み</div>
+                        <div id="stat-today" class="text-3xl font-extrabold font-display text-brand-blue">--</div>
+                        <div class="mt-2 text-[11px] text-slate-400">リアルタイム同期中</div>
+                    </div>
+                    <div class="bg-[#161C2E] border border-slate-800 rounded-2xl p-5 relative overflow-hidden">
+                        <div class="text-xs font-medium text-slate-400 mb-1">Step 4 達成完了率</div>
+                        <div id="stat-completion" class="text-3xl font-extrabold font-display text-purple-400">--</div>
+                        <div class="mt-2 text-[11px] text-slate-400">受講生平均</div>
+                    </div>
+                    <div class="bg-[#161C2E] border border-slate-800 rounded-2xl p-5 relative overflow-hidden">
+                        <div class="text-xs font-medium text-slate-400 mb-1">定期自動化タスク</div>
+                        <div class="text-3xl font-extrabold font-display text-yellow-400 flex items-center gap-2">
+                            <span>4件</span>
+                            <span class="text-xs font-mono font-normal bg-yellow-500/20 text-yellow-300 px-2 py-0.5 rounded border border-yellow-500/40">毎分稼働中</span>
+                        </div>
+                        <div class="mt-2 text-[11px] text-slate-400">自動タスクエンジンアクティブ</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Market Trend Monitor Widget (毎分自動更新) -->
+            <section id="market-trend-widget" class="bg-gradient-to-r from-[#161C2E] via-[#1A233A] to-[#161C2E] border border-emerald-500/30 rounded-2xl p-6 relative overflow-hidden shadow-xl">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="flex h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider font-mono">Scheduled Task Demo — Every Minute (* * * * *)</span>
+                        </div>
+                        <h3 class="text-xl font-black text-white mt-1 flex items-center gap-2">
+                            <i class="fa-solid fa-fire text-emerald-400"></i>
+                            <span>市場トレンド リアルタイム自動監視ウィジェット</span>
+                        </h3>
+                        <p class="text-xs text-slate-300 mt-1">定期タスク「市場トレンド自動監視」が毎分自動実行され、最新のAI開発・予約システムの関心トレンドを収集しています。</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[11px] text-slate-400 block font-mono">最終自動取得時刻</span>
+                        <span id="trend-last-updated" class="text-xs font-bold font-mono text-emerald-300">--:--:--</span>
+                    </div>
+                </div>
+
+                <!-- Trend Keywords Cards -->
+                <div id="trend-keywords-container" class="grid sm:grid-cols-3 gap-4">
+                    <div class="bg-[#0E1322]/80 rounded-xl p-4 border border-slate-700/80 text-center">
+                        <div class="text-xs text-slate-400">トレンド読み込み中...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Scheduled Tasks Management Section -->
+            <section id="scheduled-tasks" class="bg-[#161C2E] border border-slate-800 rounded-2xl p-6 space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-clock-rotate-left text-yellow-400"></i>
+                            <span>Scheduled Tasks — 定期タスク自動化コントロール</span>
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-0.5">バックグラウンドで自動実行されるタスクのON/OFF切り替えおよび手動即時実行</p>
+                    </div>
+                </div>
+
+                <!-- Scheduled Tasks Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-300">
+                        <thead class="bg-[#0E1322] text-slate-400 uppercase font-mono text-[11px] border-b border-slate-800">
+                            <tr>
+                                <th class="py-3 px-4">タスク名</th>
+                                <th class="py-3 px-4">Cronスケジュール</th>
+                                <th class="py-3 px-4">前回実行日時</th>
+                                <th class="py-3 px-4">ステータス (有効/無効)</th>
+                                <th class="py-3 px-4 text-right">手動アクション</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scheduled-tasks-tbody" class="divide-y divide-slate-800/80">
+                            <tr>
+                                <td colspan="5" class="py-8 text-center text-slate-500">タスク一覧を読み込み中...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Execution Logs View (ターミナル風) -->
+                <div class="bg-[#0B0F19] rounded-xl p-4 border border-slate-800 font-mono text-xs space-y-2">
+                    <div class="flex items-center justify-between text-slate-400 border-b border-slate-800 pb-2 text-[11px]">
+                        <span class="flex items-center gap-2">
+                            <i class="fa-solid fa-terminal text-yellow-400"></i>
+                            <span>TASK EXECUTION REALTIME LOGS</span>
+                        </span>
+                        <span class="text-[10px] text-slate-500">自動ログストリーム</span>
+                    </div>
+                    <div id="task-logs-container" class="space-y-1.5 max-h-40 overflow-y-auto pt-1 text-[11px]">
+                        <div class="text-slate-500">ログを待機中...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Reservations & Customers Table -->
+            <section id="reservations-list" class="bg-[#161C2E] border border-slate-800 rounded-2xl p-6 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-address-book text-brand-blue"></i>
+                            <span>受講予約・顧客データ一覧</span>
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-0.5">LPのフォームから届いた申し込み一覧と現在の進捗ステータス</p>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <input type="text" id="search-input" onkeyup="fetchReservations()" placeholder="お名前・メールで検索..." class="bg-[#0E1322] border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-blue w-48">
+                        <select id="status-filter" onchange="fetchReservations()" class="bg-[#0E1322] border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-300 focus:outline-none focus:border-brand-blue">
+                            <option value="all">すべてのステータス</option>
+                            <option value="registered">受講申込 (registered)</option>
+                            <option value="active">受講中 (active)</option>
+                            <option value="completed">全ステップ完了 (completed)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-300">
+                        <thead class="bg-[#0E1322] text-slate-400 uppercase font-mono text-[11px] border-b border-slate-800">
+                            <tr>
+                                <th class="py-3 px-4">申込日時</th>
+                                <th class="py-3 px-4">お名前</th>
+                                <th class="py-3 px-4">メールアドレス</th>
+                                <th class="py-3 px-4">現在の学習ステップ</th>
+                                <th class="py-3 px-4">ステータス</th>
+                                <th class="py-3 px-4">ご希望・備考</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reservations-tbody" class="divide-y divide-slate-800/80">
+                            <tr>
+                                <td colspan="6" class="py-8 text-center text-slate-500">データを読み込み中...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 5: Progress & AI Instructor Logs -->
+            <div class="grid lg:grid-cols-12 gap-6">
+                <!-- 4-Step Progress Monitor -->
+                <div id="progress-monitor" class="lg:col-span-6 bg-[#161C2E] border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-purple-400"></i>
+                        <span>受講生 4ステップ学習進捗状況</span>
+                    </h3>
+                    
+                    <div class="space-y-4 pt-2">
+                        <div class="bg-[#0E1322] rounded-xl p-4 border border-slate-800 space-y-2">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="font-bold text-white">Step 1: 要件ヒアリング & AI指定</span>
+                                <span class="text-emerald-400 font-mono font-bold">100% 完了</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                                <div class="h-full bg-emerald-500 rounded-full w-full"></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#0E1322] rounded-xl p-4 border border-slate-800 space-y-2">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="font-bold text-white">Step 2: UI & DB 自動構造設計</span>
+                                <span class="text-brand-blue font-mono font-bold">85% 達成</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                                <div class="h-full bg-brand-blue rounded-full w-[85%]"></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#0E1322] rounded-xl p-4 border border-slate-800 space-y-2">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="font-bold text-white">Step 3: 対話型AI講師とプレビュー検証</span>
+                                <span class="text-purple-400 font-mono font-bold">62% 進行中</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                                <div class="h-full bg-purple-500 rounded-full w-[62%]"></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#0E1322] rounded-xl p-4 border border-slate-800 space-y-2">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="font-bold text-white">Step 4: 1クリック公開 & 業務自動化 (Scheduled Tasks)</span>
+                                <span class="text-emerald-400 font-mono font-bold">100% 運用開始</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                                <div class="h-full bg-emerald-500 rounded-full w-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Instructor Chat Console -->
+                <div id="ai-logs" class="lg:col-span-6 bg-[#161C2E] border border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-robot text-brand-green"></i>
+                                <span>AI講師対話ログ & コンソール</span>
+                            </h3>
+                            <span class="text-[10px] font-mono text-slate-400 bg-slate-800 px-2 py-1 rounded">API Live Connection</span>
+                        </div>
+
+                        <div id="chat-logs-container" class="bg-[#0E1322] rounded-xl p-4 border border-slate-800 h-64 overflow-y-auto space-y-3 font-sans text-xs">
+                        </div>
+                    </div>
+
+                    <form onsubmit="sendTestAiMessage(event)" class="mt-4 flex gap-2">
+                        <input type="text" id="ai-test-input" placeholder="AI講師にテストメッセージを送信..." required class="flex-1 bg-[#0E1322] border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue">
+                        <button type="submit" class="px-4 py-2.5 bg-brand-blue hover:bg-blue-600 text-white rounded-xl text-xs font-bold transition-colors shrink-0">
+                            送信
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Frontend API Script -->
+    <script src="config.js"></script>
+    <script>
+        const getApiBase = () => (window.CONFIG && window.CONFIG.API_BASE) || '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            refreshAllData();
+            // 定期データ同期 (5秒ごとに自動更新)
+            setInterval(() => {
+                fetchMarketTrends();
+                fetchScheduledTasks();
+            }, 5000);
+        });
+
+        function refreshAllData() {
+            fetchDashboardStats();
+            fetchReservations();
+            fetchAiLogs();
+            fetchScheduledTasks();
+            fetchMarketTrends();
+        }
+
+        // 1. 統計データ取得
+        async function fetchDashboardStats() {
+            try {
+                const res = await fetch(`${getApiBase()}/api/dashboard/stats`);
+                const data = await res.json();
+                if (data.success) {
+                    document.getElementById('stat-total').innerText = data.stats.totalReservations;
+                    document.getElementById('stat-today').innerText = data.stats.todayReservations;
+                    document.getElementById('stat-completion').innerText = data.stats.completionRate;
+                }
+            } catch (e) { console.error('Stats error:', e); }
+        }
+
+        // 2. 市場トレンドデータ取得 (ウィジェット)
+        async function fetchMarketTrends() {
+            try {
+                const res = await fetch(`${getApiBase()}/api/market-trends`);
+                const data = await res.json();
+                if (data.success && data.trends) {
+                    const lastUpdated = new Date(data.trends.last_updated).toLocaleTimeString('ja-JP');
+                    document.getElementById('trend-last-updated').innerText = lastUpdated;
+
+                    const container = document.getElementById('trend-keywords-container');
+                    container.innerHTML = data.trends.keywords.map((item, idx) => `
+                        <div class="bg-[#0E1322]/90 rounded-xl p-4 border border-slate-700/80 hover:border-emerald-500/50 transition-all">
+                            <div class="flex items-center justify-between text-xs mb-2">
+                                <span class="font-mono text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">Rank #${idx + 1}</span>
+                                <span class="text-emerald-400 font-bold font-mono">${item.change}</span>
+                            </div>
+                            <div class="text-sm font-bold text-white mb-2 leading-snug">${item.term}</div>
+                            <div class="flex items-center justify-between text-[11px] text-slate-400">
+                                <span>関心スコア</span>
+                                <span class="font-bold text-brand-blue font-mono text-xs">${item.score} / 100</span>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (e) { console.error('Trend fetch error:', e); }
+        }
+
+        // 3. 定期タスク一覧＆ログ取得
+        async function fetchScheduledTasks() {
+            try {
+                const res = await fetch(`${getApiBase()}/api/scheduled-tasks`);
+                const data = await res.json();
+                if (data.success) {
+                    // テーブル描画
+                    const tbody = document.getElementById('scheduled-tasks-tbody');
+                    tbody.innerHTML = data.tasks.map(task => {
+                        const lastRun = task.last_run_at 
+                            ? new Date(task.last_run_at).toLocaleTimeString('ja-JP') 
+                            : '未実行';
+
+                        return `
+                            <tr class="hover:bg-slate-800/40 transition-colors">
+                                <td class="py-3 px-4 font-bold text-white flex items-center gap-2">
+                                    ${task.action_type === 'market_trend_monitor' ? '<i class="fa-solid fa-fire text-emerald-400"></i>' : '<i class="fa-solid fa-gear text-slate-400"></i>'}
+                                    <span>${task.name}</span>
+                                </td>
+                                <td class="py-3 px-4 font-mono text-yellow-400 font-semibold">${task.cron_schedule}</td>
+                                <td class="py-3 px-4 font-mono text-slate-400">${lastRun}</td>
+                                <td class="py-3 px-4">
+                                    <button onclick="toggleTask('${task.id}')" class="px-3 py-1 rounded-full text-[11px] font-bold font-mono transition-all ${task.is_active ? 'bg-emerald-950 text-emerald-400 border border-emerald-700' : 'bg-slate-800 text-slate-500 border border-slate-700'}">
+                                        ${task.is_active ? '● ON (有効)' : '○ OFF (無効)'}
+                                    </button>
+                                </td>
+                                <td class="py-3 px-4 text-right">
+                                    <button onclick="runTaskNow('${task.id}')" class="px-3 py-1 rounded-lg bg-brand-blue hover:bg-blue-600 text-white font-bold text-[11px] transition-colors inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-play text-[9px]"></i> 今すぐ実行
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
+                    }).join('');
+
+                    // ログ描画
+                    const logsContainer = document.getElementById('task-logs-container');
+                    if (data.logs && data.logs.length > 0) {
+                        logsContainer.innerHTML = data.logs.map(log => `
+                            <div class="flex items-center gap-2 text-slate-300">
+                                <span class="text-slate-500">[${new Date(log.executed_at).toLocaleTimeString('ja-JP')}]</span>
+                                <span class="text-emerald-400 font-bold">[${log.status}]</span>
+                                <span class="text-slate-200">${log.message}</span>
+                            </div>
+                        `).join('');
+                    }
+                }
+            } catch (e) { console.error('Scheduled tasks fetch error:', e); }
+        }
+
+        // タスクON/OFF切り替え
+        async function toggleTask(taskId) {
+            try {
+                await fetch(`${getApiBase()}/api/scheduled-tasks/toggle`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ taskId })
+                });
+                fetchScheduledTasks();
+            } catch (e) { console.error(e); }
+        }
+
+        // タスク手動実行
+        async function runTaskNow(taskId) {
+            try {
+                const res = await fetch(`${getApiBase()}/api/scheduled-tasks/run`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ taskId })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    fetchScheduledTasks();
+                    fetchMarketTrends();
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        // 受講予約データ取得
+        async function fetchReservations() {
+            const status = document.getElementById('status-filter').value;
+            const search = document.getElementById('search-input').value;
+            const tbody = document.getElementById('reservations-tbody');
+
+            try {
+                const res = await fetch(`${getApiBase()}/api/reservations?status=${status}&search=${encodeURIComponent(search)}`);
+                const data = await res.json();
+
+                if (data.success && data.data.length > 0) {
+                    tbody.innerHTML = data.data.map(r => {
+                        let statusBadge = '<span class="px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-800">申込済</span>';
+                        if (r.status === 'active') statusBadge = '<span class="px-2 py-0.5 rounded bg-indigo-950 text-indigo-400 border border-indigo-800">受講中</span>';
+                        if (r.status === 'completed') statusBadge = '<span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">全完了</span>';
+
+                        const dateFormatted = new Date(r.created_at).toLocaleString('ja-JP', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+
+                        return `
+                            <tr class="hover:bg-slate-800/40 transition-colors">
+                                <td class="py-3 px-4 font-mono text-slate-400">${dateFormatted}</td>
+                                <td class="py-3 px-4 font-bold text-white">${r.user_name || '未登録'}</td>
+                                <td class="py-3 px-4 text-slate-300 font-mono">${r.user_email || '-'}</td>
+                                <td class="py-3 px-4"><span class="font-mono text-brand-blue font-bold">Step ${r.current_step}</span></td>
+                                <td class="py-3 px-4">${statusBadge}</td>
+                                <td class="py-3 px-4 text-slate-400 truncate max-w-xs">${r.notes || '-'}</td>
+                            </tr>
+                        `;
+                    }).join('');
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="6" class="py-8 text-center text-slate-500">該当する受講データはありません。</td></tr>';
+                }
+            } catch (e) { console.error('Reservations error:', e); }
+        }
+
+        // AIログ取得
+        async function fetchAiLogs() {
+            const container = document.getElementById('chat-logs-container');
+            try {
+                const res = await fetch(`${getApiBase()}/api/ai/chat`);
+                const data = await res.json();
+                if (data.success && data.logs.length > 0) {
+                    container.innerHTML = data.logs.map(log => {
+                        const isUser = log.sender_type === 'user';
+                        return `
+                            <div class="flex gap-2 ${isUser ? 'justify-end' : 'justify-start'}">
+                                <div class="${isUser ? 'bg-brand-blue text-white' : 'bg-slate-800 text-slate-200 border border-slate-700'} p-2.5 rounded-xl max-w-[85%]">
+                                    <div class="font-bold text-[10px] ${isUser ? 'text-blue-100' : 'text-emerald-400'} mb-0.5">
+                                        ${isUser ? '受講者' : 'AI講師アシスタント'}
+                                    </div>
+                                    ${log.message}
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                    container.scrollTop = container.scrollHeight;
+                }
+            } catch (e) { console.error('AI logs error:', e); }
+        }
+
+        // AIメッセージ送信
+        async function sendTestAiMessage(event) {
+            event.preventDefault();
+            const input = document.getElementById('ai-test-input');
+            const message = input.value;
+            if (!message) return;
+
+            input.value = '';
+            try {
+                await fetch(`${getApiBase()}/api/ai/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userId: 'u-101', message })
+                });
+                fetchAiLogs();
+            } catch (e) { console.error(e); }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "google-antigravity-2-fullstack-tutorial",
+  "version": "1.0.0",
+  "description": "Google Antigravity 2.0 フルスタック開発チュートリアル - LP & 管理ダッシュボード & API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "google-antigravity",
+    "ai-agent",
+    "fullstack",
+    "tutorial",
+    "render",
+    "cloudflare-pages"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

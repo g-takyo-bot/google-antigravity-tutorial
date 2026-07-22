@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: google-antigravity-api
+    env: node
+    region: singapore # アジア圏の低レイテンシーリージョン
+    plan: free
+    buildCommand: echo "No build required for vanilla Node.js"
+    startCommand: node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 20.10.0
+      - key: NODE_ENV
+        value: production
